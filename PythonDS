@@ -1,0 +1,81 @@
+####1
+def check_str(a, b):
+  if len(a)!=len(b):
+    return "Error"
+
+  if len(a)<2:
+    return "Error"
+
+for i in range(1,len(b)):
+    if b[i]<b[i-1]:
+      return "MIs-ordered"
+
+  for i in range(1,len(a)):
+    if a[i]<b[i-1]:
+      return "MIs-ordered"
+
+  return "Ordered"
+
+###2
+def solv_poly(a, b, c):
+    if a[1]*b[0]-a[0]*b[1] != 0:
+        x=(b[0]*c[1]-b[1]*c[0])/(a[1]*b[0]-a[0]*b[1])
+        y=(a[1]*c[0]-a[0]*c[1])/(a[1]*b[0]-a[0]*b[1])
+    else:
+        if(b[1]!=0):
+            x=0
+            y=c[1]/b[1]
+        else:
+            if a[1]!=0:
+                x=c[1]/a[1]
+                y=0
+            else:
+                x=0
+                y=0
+
+    if a[2]*x+b[2]*y==c[2]:
+        print('{},{}'.format(x,y))
+    else:
+        print('Cannot Solve')
+
+
+###3
+def tree2list(tree):
+    q1=[tree]
+    result=[]
+    while len(q1)!=0:
+        list=[]
+        for val in q1:
+            list.append(val['val'])
+        result.append(list)
+        q2=[]
+        for head in q1:
+            if(len(head['left'])!=0):
+                q2.append(head['left'])
+            if(len(head['right'])!=0):
+                q2.append(head['right'])
+            q1=q2
+    print(result)
+
+tree1={'right': {'right': {'right': {}, 'val': 5, 'left': {}}, 'val': 2, 'left': {}}, 'val': 0,
+'left': {'right': {'right': {}, 'val': 4, 'left': {'right': {}, 'val': 6, 'left': {}}}, 'val': 1, 'left': {'right': {}, 'val': 3, 'left': {}}}}
+tree2={'val':1,'left':{'val':5,'left':{'val':6,'left':{},'right':{}},'right':{'val':7,'left':{},'right':{}}},
+'right':{'val':3,'left':{},'right':{}}}
+tree3 ={'val':1,'left':{'val':5,'left':{'val':6,'left':
+{},'right':{}},'right':{'val':7,'left':{'val':
+11,'left':{'val':12,'left':{},'right':{}},'right':
+{}},'right':{}}},'right':{'val':3,'left':{'val':
+9,'left':{},'right':{}},'right':{'val':10,'left':
+{'val':2,'left':{},'right':{}},'right':{'val':4,'left':
+{},'right':{}}}}}\
+
+
+###4
+def number_of_coln(size):
+    return factorial(size*2)/(factorial(size)**2)
+
+def factorial(x):
+    result=1
+    for i in range(1, x+1):
+        result*=i
+    return result

@@ -1,0 +1,9 @@
+/* 懒人做题 10/09/2018 */
+SELECT comm_num, count(a.content_id) as count_post
+FROM
+(SELECT a.content_id, count(b.content_id) as comm_num
+FROM post_comment as a LEFT JOIN post_comment as b
+    ON a.content_id=b.target_id
+WHERE a.content_type='post'
+GROUP BY a.content_id) as t
+GROUP BY comm_num
